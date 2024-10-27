@@ -1,0 +1,1 @@
+Simple python library for decoding encoded binary data
