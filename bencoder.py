@@ -1,11 +1,6 @@
 def decode_integer(input_string: str, index: int):
-    # check for empty string
-    if not input_string:
-        raise ValueError("Input string is empty.")
-
-    # first check
-    if input_string[index] != "i":
-        raise ValueError("there is no i at the start.")
+    assert len(input_string) > 0, "input string must be non-empty"
+    assert input_string[index] == "i", "input string must start with an 'i'"
 
     # find the e
     index_of_e = input_string.find("e", index)
@@ -23,12 +18,9 @@ def decode_integer(input_string: str, index: int):
 
 
 def decode_string(input_string: str, index: int):
-    # check for empty string
-    if not input_string:
-        raise ValueError("Input string is empty.")
+    assert len(input_string) > 0, "input string must be non-empty"
+    assert input_string[index].isdigit(), "input string must start with a digit"
 
-    if not input_string[index].isdigit():
-        raise ValueError("input string must start with a number")
     # find the place of colon
     index_of_colon = input_string.find(":", index)
     if index_of_colon == -1:
@@ -49,15 +41,11 @@ def decode_string(input_string: str, index: int):
 
 
 def decode_list(input_string: str, index: int):
-    # check for empty string
-    if not input_string:
-        raise ValueError("Input string is empty.")
+    assert len(input_string) > 0, "input string must be non-empty"
+    assert input_string[index] == "l", "input string must start with an 'l'"
 
-    # check the list
-    if input_string[index] != "l":
-        raise ValueError("a list should start with an 'l'")
-    else:
-        index += 1
+    # raise index by one to get past l
+    index += 1
 
     # init array
     the_list = []
@@ -90,17 +78,11 @@ def decode_list(input_string: str, index: int):
 
 
 def decode_dictionary(input_string: str, index: int) -> tuple[dict, int]:
-    # check for empty string
-    if not input_string:
-        raise ValueError("Input string is empty.")
-
-    # # check the d char
-    if input_string[index] != "d":
-        raise ValueError("a dictionary should have a d in front")
+    assert len(input_string) > 0, "input string must be non-empty"
+    assert input_string[index] == "d", "input string must start with a 'd'"
 
     # raise index by one to get past d
-    else:
-        index += 1
+    index += 1
 
     # init a dictionary
     the_dict = {}
