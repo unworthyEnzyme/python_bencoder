@@ -1,4 +1,4 @@
-def decode_integer(input_string: str, index: int):
+def decode_integer(input_string: str, index: int) -> tuple[int, int]:
     assert len(input_string) > 0, "input string must be non-empty"
     assert input_string[index] == "i", "input string must start with an 'i'"
 
@@ -17,7 +17,7 @@ def decode_integer(input_string: str, index: int):
     return the_number, index_of_e + 1
 
 
-def decode_string(input_string: str, index: int):
+def decode_string(input_string: str, index: int) -> tuple[str, int]:
     assert len(input_string) > 0, "input string must be non-empty"
     assert input_string[index].isdigit(), "input string must start with a digit"
 
@@ -40,7 +40,7 @@ def decode_string(input_string: str, index: int):
     return the_string, the_last_index
 
 
-def decode_list(input_string: str, index: int):
+def decode_list(input_string: str, index: int) -> tuple[list, int]:
     assert len(input_string) > 0, "input string must be non-empty"
     assert input_string[index] == "l", "input string must start with an 'l'"
 
@@ -123,13 +123,13 @@ def decode_dictionary(input_string: str, index: int) -> tuple[dict, int]:
     return the_dict, index + 1
 
 
-def read_torrent_file(file_path):
+def read_torrent_file(file_path: str) -> str:
     with open(file_path, "rb") as f:
         content = f.read()
     return content.decode("ISO-8859-1")
 
 
-def bencode(file_path: str):
+def bencode(file_path: str) -> dict:
     input_string = read_torrent_file(file_path)
 
     decoded_data, _ = decode_dictionary(input_string, 0)
