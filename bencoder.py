@@ -28,12 +28,12 @@ def decode_string(input_string: str, index: int):
 
     # parse the length of string
     try:
-        lentgth_of_string = int(input_string[index:index_of_colon])
+        length_of_string = int(input_string[index:index_of_colon])
     except ValueError:
         raise ValueError("invalid length")
 
     # parse the string itself
-    the_last_index = index_of_colon + 1 + lentgth_of_string
+    the_last_index = index_of_colon + 1 + length_of_string
     the_string = input_string[index_of_colon + 1 : the_last_index]
 
     # return the string
